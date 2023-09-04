@@ -22,5 +22,16 @@ namespace PryEDFranco
             frmCola v = new frmCola();
             v.ShowDialog();
         }
+
+        private void frmPrincipal_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pilaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmPila v = new frmPila();
+            v.ShowDialog();
+        }
     }
 }

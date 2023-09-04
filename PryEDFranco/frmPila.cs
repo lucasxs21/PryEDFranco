@@ -10,18 +10,18 @@ using System.Windows.Forms;
 
 namespace PryEDFranco
 {
-    public partial class frmCola : Form
+    public partial class frmPila : Form
     {
-        public frmCola()
+        public frmPila()
         {
             InitializeComponent();
         }
 
-        private void dgvCola_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvpila_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
-        clsCola FilaDePersonas = new clsCola();
+        clsPila FilaDePersonas = new clsPila();
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             clsNodo objNodo = new clsNodo();
@@ -34,9 +34,9 @@ namespace PryEDFranco
 
 
             FilaDePersonas.Agregar(objNodo);
-            FilaDePersonas.Recorrer(dgvCola);
+            FilaDePersonas.Recorrer(dgvpila);
             FilaDePersonas.Recorrer();
-            FilaDePersonas.Recorrer(lstcola);
+            FilaDePersonas.Recorrer(lstpila);
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -45,10 +45,10 @@ namespace PryEDFranco
             {
                 lblCod.Text = FilaDePersonas.Primero.Codigo.ToString();
                 lblNam.Text = FilaDePersonas.Primero.Nombre;
-                lblTramite.Text=FilaDePersonas.Primero.Tramite;
+                lblTramite.Text = FilaDePersonas.Primero.Tramite;
                 FilaDePersonas.Eliminar();
-                FilaDePersonas.Recorrer(dgvCola);
-                FilaDePersonas.Recorrer(lstcola);
+                FilaDePersonas.Recorrer(dgvpila);
+                FilaDePersonas.Recorrer(lstpila);
                 FilaDePersonas.Recorrer();
             }
             else
@@ -57,11 +57,6 @@ namespace PryEDFranco
                 lblNam.Text = "";
                 lblTramite.Text = "";
             }
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
         }
     }
 }

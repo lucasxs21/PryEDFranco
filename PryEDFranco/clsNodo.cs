@@ -13,6 +13,7 @@ namespace PryEDFranco
         private String nom;
         private String tra;
         private clsNodo sig;
+       
 
         //propiedades del nodo 
         public Int32 Codigo
@@ -34,8 +35,14 @@ namespace PryEDFranco
         {
             get { return sig; }
             set { sig = value; }
-            
-                          
+                                     
         }
+
+       
+        
+        
+
+        
+
     }
 }
