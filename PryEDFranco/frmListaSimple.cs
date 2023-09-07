@@ -10,19 +10,29 @@ using System.Windows.Forms;
 
 namespace PryEDFranco
 {
-    public partial class frmPila : Form
+    public partial class frmListaSimple : Form
     {
-        public frmPila()
+        public frmListaSimple()
         {
             InitializeComponent();
         }
 
-        private void dgvpila_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void frmListaSimple_Load(object sender, EventArgs e)
         {
 
         }
-        clsPila FilaDePersonas = new clsPila();
+        clsListaSimple FilaDePersonas = new clsListaSimple();
         private void btnAgregar_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void btnAgregar_Click_1(object sender, EventArgs e)
         {
             clsNodo objNodo = new clsNodo();
             objNodo.Codigo = Convert.ToInt32(txtCodigo.Text);
@@ -34,34 +44,27 @@ namespace PryEDFranco
 
 
             FilaDePersonas.Agregar(objNodo);
-            FilaDePersonas.Recorrer(dgvpila);
+            FilaDePersonas.Recorrer(dgvLista);
             FilaDePersonas.Recorrer();
-            FilaDePersonas.Recorrer(lstpila);
+            FilaDePersonas.Recorrer(cmbEliminar);
+            FilaDePersonas.Recorrer(lstLista);
         }
 
-        private void btnEliminar_Click(object sender, EventArgs e)
+        private void btnEliminar_Click_1(object sender, EventArgs e)
         {
+            Int32 code = Convert.ToInt32(cmbEliminar.Text);
             if (FilaDePersonas.Primero != null)
             {
-                lblCod.Text = FilaDePersonas.Primero.Codigo.ToString();
-                lblNam.Text = FilaDePersonas.Primero.Nombre;
-                lblTramite.Text = FilaDePersonas.Primero.Tramite;
-                FilaDePersonas.Eliminar();
-                FilaDePersonas.Recorrer(dgvpila);
-                FilaDePersonas.Recorrer(lstpila);
+
+                FilaDePersonas.Eliminar1(code);
+                FilaDePersonas.Recorrer(dgvLista);
+                FilaDePersonas.Recorrer(lstLista);
                 FilaDePersonas.Recorrer();
             }
             else
             {
-                lblCod.Text = "";
-                lblNam.Text = "";
-                lblTramite.Text = "";
+
             }
-        }
-
-        private void frmPila_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

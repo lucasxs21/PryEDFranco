@@ -279,6 +279,7 @@
             this.Name = "frmPila";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmPila";
+            this.Load += new System.EventHandler(this.frmPila_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvpila)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);

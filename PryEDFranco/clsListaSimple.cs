@@ -1,4 +1,4 @@
-﻿
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +8,7 @@ using System.IO;
 
 namespace PryEDFranco
 {
-    internal class clsPila
+    internal class clsListaSimple
     {
         private clsNodo pri;
 
@@ -25,19 +25,48 @@ namespace PryEDFranco
             }
             else
             {
-                Nuevo.siguiente = Primero;
-                Primero = Nuevo;
-            }
+                if (Nuevo.Codigo <= Primero.Codigo)
+                {
+                    Nuevo.siguiente = Primero;
+                    Primero = Nuevo;
+                }
+                else
+                {
+                    clsNodo aux = Primero;
+                    clsNodo ant = Primero;
+                    while (Nuevo.Codigo > aux.Codigo)
+                    {
+                        ant = aux;
+                        aux = aux.siguiente;
+                        if (aux == null)
+                        {
+                            break;
+                        }
+                        ant.siguiente = Nuevo;
+                        Nuevo.siguiente = aux;
+                    }
 
+                }
+            }   
         }
-        public void Eliminar()
+        public void Eliminar1(Int32 codigo)
         {
-            if (Primero != null )
+            if (Primero.Codigo == codigo)
             {
                 Primero = Primero.siguiente;
             }
+            else
+            {
+                clsNodo aux1 = Primero;
+                clsNodo aux2 = Primero;
+                while (aux1.Codigo != codigo)
+                {
+                    aux2 = aux1;
+                    aux1 = aux1.siguiente;
+                }
+                aux2.siguiente = aux1.siguiente;
+            }
         }
-
         public void Recorrer(DataGridView Grilla)
         {
             clsNodo aux = Primero;
@@ -59,10 +88,20 @@ namespace PryEDFranco
                 aux = aux.siguiente;
             }
         }
+        public void Recorrer(ComboBox Combo)
+        {
+            clsNodo aux = Primero;
+            Combo.Items.Clear();
+            while (aux != null)
+            {
+                Combo.Items.Add(aux.Codigo);
+                aux = aux.siguiente;
+            }
+        }
         public void Recorrer()
         {
             clsNodo aux = Primero;
-            StreamWriter AD = new StreamWriter("Pila.csv", false, Encoding.UTF8);
+            StreamWriter AD = new StreamWriter("ListaSimple.csv", false, Encoding.UTF8);
             AD.WriteLine("lista de espera\n");
             AD.WriteLine("Codigo;Nombre;tramite");
             while (aux != null)
@@ -77,7 +116,5 @@ namespace PryEDFranco
             }
             AD.Close();
         }
-
     }
 }
-
