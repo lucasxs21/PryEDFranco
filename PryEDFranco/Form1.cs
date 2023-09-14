@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace PryEDFranco
 {
-    public partial class frmListaDoble : Form
+    public partial class Form1 : Form
     {
-        public frmListaDoble()
+        public Form1()
         {
             InitializeComponent();
-        }
-
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-           
         }
     }
 }
