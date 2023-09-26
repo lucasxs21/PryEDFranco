@@ -210,6 +210,113 @@ namespace PryEDFranco
 
 
 
+        public void ExportarIn(DataGridView Grilla)
+        {
+            try
+            {
+                using (StreamWriter writer = new StreamWriter("arbolInOrden.txt", false))
+                {
+                    foreach (DataGridViewRow row in Grilla.Rows)
+                    {
+                        foreach (DataGridViewCell cell in row.Cells)
+                        {
+                            // Escribe el valor de la celda en el archivo de texto
+                            writer.Write(cell.Value.ToString() + "\t");
+                        }
+                        writer.WriteLine(); // Salta a la siguiente línea
+                    }
+                }
+                MessageBox.Show("Datos guardados en el archivo de texto correctamente.");
+
+
+
+
+
+
+
+
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al guardar los datos: " + ex.Message);
+            }
+
+        }
+
+        public void ExportarPre(DataGridView Grilla)
+        {
+            try
+            {
+                using (StreamWriter writer = new StreamWriter("arbolPreOrden.txt", false))
+                {
+                    foreach (DataGridViewRow row in Grilla.Rows)
+                    {
+                        foreach (DataGridViewCell cell in row.Cells)
+                        {
+                            // Escribe el valor de la celda en el archivo de texto
+                            writer.Write(cell.Value.ToString() + "\t");
+                        }
+                        writer.WriteLine(); // Salta a la siguiente línea
+                    }
+                }
+                MessageBox.Show("Datos guardados en el archivo de texto correctamente.");
+
+
+
+
+
+
+
+
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al guardar los datos: " + ex.Message);
+            }
+
+        }
+
+        public void ExportarPost(DataGridView Grilla)
+        {
+            try
+            {
+                using (StreamWriter writer = new StreamWriter("arbolPostOrden.txt", false))
+                {
+                    foreach (DataGridViewRow row in Grilla.Rows)
+                    {
+                        foreach (DataGridViewCell cell in row.Cells)
+                        {
+                            // Escribe el valor de la celda en el archivo de texto
+                            writer.Write(cell.Value.ToString() + "\t");
+                        }
+                        writer.WriteLine(); // Salta a la siguiente línea
+                    }
+                }
+                MessageBox.Show("Datos guardados en el archivo de texto correctamente.");
+
+
+
+
+
+
+
+
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al guardar los datos: " + ex.Message);
+            }
+
+        }
+
+
+
 
 
     }

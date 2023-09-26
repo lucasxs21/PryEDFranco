@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+
 
 namespace PryEDFranco
 {
@@ -45,17 +47,17 @@ namespace PryEDFranco
 
         private void optIn_CheckedChanged(object sender, EventArgs e)
         {
-            ObjArbol.RecorrerIn(dgvLista);
+            ObjArbol.Recorrer(dgvLista);
         }
 
         private void optPre_CheckedChanged(object sender, EventArgs e)
         {
-            ObjArbol.RecorrerPre(dgvLista);
+            ObjArbol.Recorrer(dgvLista);
         }
 
         private void optPost_CheckedChanged(object sender, EventArgs e)
         {
-            ObjArbol.RecorrerPost(dgvLista);
+            ObjArbol.Recorrer(dgvLista);
 
         }
 
@@ -101,8 +103,8 @@ namespace PryEDFranco
             Persona.Tramite = txtTramite.Text;
 
             ObjArbol.Agregar(Persona);
-            ObjArbol.RecorrerIn(dgvLista);
-            ObjArbol.Recorrer(treeView1);
+            ObjArbol.Recorrer(dgvLista);
+            //ObjArbol.Recorrer(treeView1);
 
             txtCodigo.Text = "";
             txtNombre.Text = "";
@@ -110,5 +112,5 @@ namespace PryEDFranco
             btnAgregar.Enabled = false;
         }
     }
-    }
+    
 }
