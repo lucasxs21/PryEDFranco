@@ -11,25 +11,30 @@ namespace PryEDFranco
 {
     class clsArbolBinario
     {
-        //Creo el campo inicial del arbol. Lo llamamos raiz
         private clsNodo PrimerNodo;
-        //Creo la unica propiedad que necesito.
+
+
         public clsNodo Raiz
         {
             get { return PrimerNodo; }
             set { PrimerNodo = value; }
         }
-        public clsNodo BuscarCodigo(Int32 cod)
+
+
+
+        public clsNodo BuscarCodigo(Int32 Cod)
         {
             clsNodo Aux = Raiz;
             while (Aux != null)
             {
-                if (cod == Aux.Codigo) break;
-                if (cod < Aux.Codigo) Aux = Aux.Izquierdo;
+                if (Cod == Aux.Codigo) break;
+                if (Cod < Aux.Codigo) Aux = Aux.Izquierdo;
                 else Aux = Aux.Derecho;
+
             }
             return Aux;
         }
+
         public void Agregar(clsNodo Nvo)
         {
             Nvo.Izquierdo = null;
@@ -40,7 +45,7 @@ namespace PryEDFranco
             }
             else
             {
-                clsNodo NodoPadre = Raiz; //ant
+                clsNodo NodoPadre = Raiz;
                 clsNodo Aux = Raiz;
                 while (Aux != null)
                 {
@@ -54,7 +59,6 @@ namespace PryEDFranco
                         Aux = Aux.Derecho;
                     }
                 }
-                //Afuera del whil
                 if (Nvo.Codigo < NodoPadre.Codigo)
                 {
                     NodoPadre.Izquierdo = Nvo;
@@ -65,61 +69,7 @@ namespace PryEDFranco
                 }
             }
         }
-        private clsNodo[] Vector = new clsNodo[100];
-        private Int32 i = 0;
-        public void Equilibrar()
-        {
-            i = 0;
-            GrabarVectorInOrden(Raiz);
-            Raiz = null;
-            EquilibrarArbol(0, i-1);
-        }
-        public void Eliminar(Int32 codigo)
-        {
-            i = 0;
-            GrabarVectorInOrden(Raiz, codigo);
-            Raiz = null;
-            EquilibrarArbol(0, i-1);
-        }
-        private void EquilibrarArbol(Int32 ini, Int32 fin)
-        {
-            Int32 m = (ini + fin) / 2;
-            if (ini <= fin)
-            {
-                Agregar(Vector[m]);
-                EquilibrarArbol(ini, m-1);
-                EquilibrarArbol(m + 1, fin);
-            }
-        }
-        private void GrabarVectorInOrden(clsNodo NodoPadre)
-        {
-            if (NodoPadre.Izquierdo != null)
-            {
-                GrabarVectorInOrden(NodoPadre.Izquierdo);
-            }
-            Vector[i] = NodoPadre;
-            i = i + 1;
-            if (NodoPadre.Derecho != null)
-            {
-                GrabarVectorInOrden(NodoPadre.Derecho);
-            }
-        }
-        private void GrabarVectorInOrden(clsNodo NodoPadre, Int32 Codigo)
-        {
-            if (NodoPadre.Izquierdo != null)
-            {
-                GrabarVectorInOrden(NodoPadre.Izquierdo, Codigo);
-            }
-            if (NodoPadre.Codigo != Codigo)
-            {
-                Vector[i] = NodoPadre;
-                i = i + 1;
-            }
-            if (NodoPadre.Derecho != null)
-            {
-                GrabarVectorInOrden(NodoPadre.Derecho, Codigo);
-            }
-        }
+
         public void Recorrer(ComboBox Lista)
         {
             Lista.Items.Clear();
@@ -137,75 +87,72 @@ namespace PryEDFranco
                 InOrdenAsc(Lst, R.Derecho);
             }
         }
-        public void Recorrer(ListBox Lista)
+
+
+
+
+        private void InOrdenAsc(DataGridView dgv, clsNodo R)
         {
-            Lista.Items.Clear();
-            InOrdenAsc(Lista, Raiz);
+            if (R.Izquierdo != null) InOrdenAsc(dgv, R.Izquierdo);
+            dgv.Rows.Add(R.Codigo, R.Nombre, R.Tramite);
+            if (R.Derecho != null) InOrdenAsc(dgv, R.Derecho);
         }
-        public void InOrdenAsc(ListBox Lst, clsNodo R)
-        {
-            if (R.Izquierdo != null)
-            {
-                InOrdenAsc(Lst, R.Izquierdo);
-            }
-            Lst.Items.Add(R.Codigo);
-            if (R.Derecho != null)
-            {
-                InOrdenAsc(Lst, R.Derecho);
-            }
-        }
-        public void Recorrer(DataGridView Grilla)
+
+        public void RecorrerIn(DataGridView Grilla)
         {
             Grilla.Rows.Clear();
             InOrdenAsc(Grilla, Raiz);
         }
-        private void InOrdenAsc(DataGridView Dgv, clsNodo R)
+
+        private void PreOrdenAsc(DataGridView dgv, clsNodo R)
         {
-            if (R.Izquierdo != null) InOrdenAsc(Dgv, R.Izquierdo);
-            Dgv.Rows.Add(R.Codigo);
-            if (R.Derecho != null) InOrdenAsc(Dgv, R.Derecho);
+            dgv.Rows.Add(R.Codigo, R.Nombre, R.Tramite);
+            if (R.Izquierdo != null) PreOrdenAsc(dgv, R.Izquierdo);
+            if (R.Derecho != null) PreOrdenAsc(dgv, R.Derecho);
         }
-        public void InOrdenDesc(ListBox Lst, clsNodo R)
+
+        public void RecorrerPre(DataGridView Grilla)
         {
-            if (R.Derecho != null
-            )
-            {
-                InOrdenDesc(Lst, R.Derecho);
-            }
-            Lst.Items.Add(R.Codigo);
-            if (R.Izquierdo != null
-            )
-            {
-                InOrdenDesc(Lst, R.Izquierdo);
-            }
+            Grilla.Rows.Clear();
+            PreOrdenAsc(Grilla, Raiz);
         }
-        public void PreOrden(ListBox Lst, clsNodo R)
+
+        private void PostOrdenAsc(DataGridView dgv, clsNodo R)
         {
-            Lst.Items.Add(R.Codigo);
-            if (R.Izquierdo != null
-            )
-            {
-                PreOrden(Lst, R.Izquierdo);
-            }
-            if (R.Derecho != null
-            )
-            {
-                PreOrden(Lst, R.Derecho);
-            }
+            if (R.Izquierdo != null) PostOrdenAsc(dgv, R.Izquierdo);
+            if (R.Derecho != null) PostOrdenAsc(dgv, R.Derecho);
+            dgv.Rows.Add(R.Codigo, R.Nombre, R.Tramite);
         }
-        public void PostOrden(ListBox Lst, clsNodo R)
+
+        public void RecorrerPost(DataGridView Grilla)
         {
-            if (R.Izquierdo != null
-            )
+            Grilla.Rows.Clear();
+            PostOrdenAsc(Grilla, Raiz);
+        }
+
+
+
+        public void Recorrer(TreeView tree)
+        {
+            tree.Nodes.Clear();
+            TreeNode NodoPadre = new TreeNode("Arbol");
+            tree.Nodes.Add(NodoPadre);
+            PreOrden(Raiz, NodoPadre);
+            tree.ExpandAll();
+        }
+
+        private void PreOrden(clsNodo R, TreeNode nodoTreeView)
+        {
+            TreeNode NodoPadre = new TreeNode(R.Codigo.ToString());
+            nodoTreeView.Nodes.Add(NodoPadre);
+            if (R.Izquierdo != null)
             {
-                PostOrden(Lst, R.Izquierdo);
+                PreOrden(R.Izquierdo, NodoPadre);
             }
-            if (R.Derecho != null
-            )
+            if (R.Derecho != null)
             {
-                PostOrden(Lst, R.Derecho);
+                PreOrden(R.Derecho, NodoPadre);
             }
-            Lst.Items.Add(R.Codigo);
         }
 
 
@@ -221,21 +168,12 @@ namespace PryEDFranco
                         foreach (DataGridViewCell cell in row.Cells)
                         {
                             // Escribe el valor de la celda en el archivo de texto
-                            writer.Write(cell.Value.ToString() + "\t");
+                            writer.Write(cell.Value + "\t");
                         }
                         writer.WriteLine(); // Salta a la siguiente línea
                     }
                 }
                 MessageBox.Show("Datos guardados en el archivo de texto correctamente.");
-
-
-
-
-
-
-
-
-
 
             }
             catch (Exception ex)
@@ -256,21 +194,12 @@ namespace PryEDFranco
                         foreach (DataGridViewCell cell in row.Cells)
                         {
                             // Escribe el valor de la celda en el archivo de texto
-                            writer.Write(cell.Value.ToString() + "\t");
+                            writer.Write(cell.Value + "\t");
                         }
                         writer.WriteLine(); // Salta a la siguiente línea
                     }
                 }
                 MessageBox.Show("Datos guardados en el archivo de texto correctamente.");
-
-
-
-
-
-
-
-
-
 
             }
             catch (Exception ex)
@@ -291,7 +220,7 @@ namespace PryEDFranco
                         foreach (DataGridViewCell cell in row.Cells)
                         {
                             // Escribe el valor de la celda en el archivo de texto
-                            writer.Write(cell.Value.ToString() + "\t");
+                            writer.Write(cell.Value + "\t");
                         }
                         writer.WriteLine(); // Salta a la siguiente línea
                     }
@@ -315,6 +244,67 @@ namespace PryEDFranco
 
         }
 
+
+
+
+        private clsNodo[] Vector = new clsNodo[100];
+        private Int32 i = 0;
+        public void Equilibrar()
+        {
+            i = 0;
+            GrabarVectorInOrden(Raiz);
+            Raiz = null;
+            EquilibrarArbol(0, i - 1);
+        }
+
+        public void Eliminar(Int32 codigo)
+        {
+            i = 0;
+            GrabarVectorInOrden(Raiz, codigo);
+            Raiz = null;
+            EquilibrarArbol(0, i - 1);
+        }
+        private void EquilibrarArbol(Int32 ini, Int32 fin)
+        {
+            Int32 m = (ini + fin) / 2;
+            if (ini <= fin)
+            {
+                Agregar(Vector[m]);
+                EquilibrarArbol(ini, m - 1);
+                EquilibrarArbol(m + 1, fin);
+            }
+        }
+
+        private void GrabarVectorInOrden(clsNodo NodoPadre)
+        {
+            if (NodoPadre.Izquierdo != null)
+            {
+                GrabarVectorInOrden(NodoPadre.Izquierdo);
+            }
+            Vector[i] = NodoPadre;
+            i = i + 1;
+            if (NodoPadre.Derecho != null)
+            {
+                GrabarVectorInOrden(NodoPadre.Derecho);
+            }
+        }
+
+        private void GrabarVectorInOrden(clsNodo NodoPadre, Int32 Codigo)
+        {
+            if (NodoPadre.Izquierdo != null)
+            {
+                GrabarVectorInOrden(NodoPadre.Izquierdo, Codigo);
+            }
+            if (NodoPadre.Codigo != Codigo)
+            {
+                Vector[i] = NodoPadre;
+                i = i + 1;
+            }
+            if (NodoPadre.Derecho != null)
+            {
+                GrabarVectorInOrden(NodoPadre.Derecho, Codigo);
+            }
+        }
 
 
 

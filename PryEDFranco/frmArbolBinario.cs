@@ -32,12 +32,19 @@ namespace PryEDFranco
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-
+            ObjArbol.Eliminar(Convert.ToInt32(cmbEliminar.Text));
+            ObjArbol.RecorrerIn(dgvLista);
+            ObjArbol.Recorrer(treeView1);
+            ObjArbol.Recorrer(cmbEliminar);
+            btnEliminar.Enabled = false;
         }
 
         private void cmbEliminar_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (cmbEliminar.SelectedIndex != -1)
+            {
+                btnEliminar.Enabled = true;
+            }
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -47,17 +54,17 @@ namespace PryEDFranco
 
         private void optIn_CheckedChanged(object sender, EventArgs e)
         {
-            ObjArbol.Recorrer(dgvLista);
+            ObjArbol.RecorrerIn(dgvLista);
         }
 
         private void optPre_CheckedChanged(object sender, EventArgs e)
         {
-            ObjArbol.Recorrer(dgvLista);
+            ObjArbol.RecorrerPre(dgvLista);
         }
 
         private void optPost_CheckedChanged(object sender, EventArgs e)
         {
-            ObjArbol.Recorrer(dgvLista);
+            ObjArbol.RecorrerPost(dgvLista);
 
         }
 
@@ -103,13 +110,34 @@ namespace PryEDFranco
             Persona.Tramite = txtTramite.Text;
 
             ObjArbol.Agregar(Persona);
-            ObjArbol.Recorrer(dgvLista);
-            //ObjArbol.Recorrer(treeView1);
+            ObjArbol.RecorrerIn(dgvLista);
+            ObjArbol.Recorrer(treeView1);
 
             txtCodigo.Text = "";
             txtNombre.Text = "";
             txtTramite.Text = "";
             btnAgregar.Enabled = false;
+        }
+
+        private void btnEquilibrar_Click(object sender, EventArgs e)
+        {
+            ObjArbol.Equilibrar();
+            ObjArbol.RecorrerIn(dgvLista);
+            ObjArbol.Recorrer(treeView1);
+            ObjArbol.Recorrer(cmbEliminar);
+        }
+
+        private void txtCodigo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCodigo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
     

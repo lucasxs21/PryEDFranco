@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnExportar = new System.Windows.Forms.Button();
             this.optPost = new System.Windows.Forms.RadioButton();
             this.optPre = new System.Windows.Forms.RadioButton();
             this.optIn = new System.Windows.Forms.RadioButton();
@@ -50,7 +51,6 @@
             this.lblCodigo = new System.Windows.Forms.Label();
             this.btnEquilibrar = new System.Windows.Forms.Button();
             this.treeView1 = new System.Windows.Forms.TreeView();
-            this.btnExportar = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -72,11 +72,21 @@
             this.groupBox3.Text = "Listado en una Lista una Grilla";
             this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
+            // btnExportar
+            // 
+            this.btnExportar.Location = new System.Drawing.Point(54, 203);
+            this.btnExportar.Name = "btnExportar";
+            this.btnExportar.Size = new System.Drawing.Size(75, 23);
+            this.btnExportar.TabIndex = 5;
+            this.btnExportar.Text = "Exportar";
+            this.btnExportar.UseVisualStyleBackColor = true;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
+            // 
             // optPost
             // 
             this.optPost.AutoSize = true;
             this.optPost.Location = new System.Drawing.Point(8, 170);
-            this.optPost.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.optPost.Margin = new System.Windows.Forms.Padding(2);
             this.optPost.Name = "optPost";
             this.optPost.Size = new System.Drawing.Size(78, 17);
             this.optPost.TabIndex = 4;
@@ -89,7 +99,7 @@
             // 
             this.optPre.AutoSize = true;
             this.optPre.Location = new System.Drawing.Point(8, 113);
-            this.optPre.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.optPre.Margin = new System.Windows.Forms.Padding(2);
             this.optPre.Name = "optPre";
             this.optPre.Size = new System.Drawing.Size(73, 17);
             this.optPre.TabIndex = 3;
@@ -102,7 +112,7 @@
             // 
             this.optIn.AutoSize = true;
             this.optIn.Location = new System.Drawing.Point(8, 54);
-            this.optIn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.optIn.Margin = new System.Windows.Forms.Padding(2);
             this.optIn.Name = "optIn";
             this.optIn.Size = new System.Drawing.Size(66, 17);
             this.optIn.TabIndex = 2;
@@ -252,6 +262,8 @@
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(84, 20);
             this.txtCodigo.TabIndex = 1;
+            this.txtCodigo.TextChanged += new System.EventHandler(this.txtCodigo_TextChanged);
+            this.txtCodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigo_KeyPress);
             // 
             // lblCodigo
             // 
@@ -265,12 +277,13 @@
             // btnEquilibrar
             // 
             this.btnEquilibrar.Location = new System.Drawing.Point(517, 173);
-            this.btnEquilibrar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEquilibrar.Margin = new System.Windows.Forms.Padding(2);
             this.btnEquilibrar.Name = "btnEquilibrar";
             this.btnEquilibrar.Size = new System.Drawing.Size(190, 50);
             this.btnEquilibrar.TabIndex = 16;
             this.btnEquilibrar.Text = "Equilibrar";
             this.btnEquilibrar.UseVisualStyleBackColor = true;
+            this.btnEquilibrar.Click += new System.EventHandler(this.btnEquilibrar_Click);
             // 
             // treeView1
             // 
@@ -278,16 +291,6 @@
             this.treeView1.Name = "treeView1";
             this.treeView1.Size = new System.Drawing.Size(175, 211);
             this.treeView1.TabIndex = 17;
-            // 
-            // btnExportar
-            // 
-            this.btnExportar.Location = new System.Drawing.Point(54, 203);
-            this.btnExportar.Name = "btnExportar";
-            this.btnExportar.Size = new System.Drawing.Size(75, 23);
-            this.btnExportar.TabIndex = 5;
-            this.btnExportar.Text = "Exportar";
-            this.btnExportar.UseVisualStyleBackColor = true;
-            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
             // frmArbolBinario
             // 
@@ -299,7 +302,7 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmArbolBinario";
             this.Text = "Arbol_Binario";
             this.Load += new System.EventHandler(this.Arbol_Binario_Load);
