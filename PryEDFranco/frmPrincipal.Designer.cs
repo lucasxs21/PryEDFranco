@@ -148,14 +148,14 @@
             // arbolBinarioToolStripMenuItem
             // 
             this.arbolBinarioToolStripMenuItem.Name = "arbolBinarioToolStripMenuItem";
-            this.arbolBinarioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.arbolBinarioToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.arbolBinarioToolStripMenuItem.Text = "Arbol Binario...";
             this.arbolBinarioToolStripMenuItem.Click += new System.EventHandler(this.arbolBinarioToolStripMenuItem_Click);
             // 
             // grafosToolStripMenuItem
             // 
             this.grafosToolStripMenuItem.Name = "grafosToolStripMenuItem";
-            this.grafosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.grafosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.grafosToolStripMenuItem.Text = "Grafos...";
             // 
             // baseDeDatosToolStripMenuItem
@@ -180,6 +180,7 @@
             this.consultasEnLaBaseDeDatosToolStripMenuItem.Name = "consultasEnLaBaseDeDatosToolStripMenuItem";
             this.consultasEnLaBaseDeDatosToolStripMenuItem.Size = new System.Drawing.Size(288, 22);
             this.consultasEnLaBaseDeDatosToolStripMenuItem.Text = "Consultas en la base de datos...";
+            this.consultasEnLaBaseDeDatosToolStripMenuItem.Click += new System.EventHandler(this.consultasEnLaBaseDeDatosToolStripMenuItem_Click);
             // 
             // toolStripMenuItem3
             // 

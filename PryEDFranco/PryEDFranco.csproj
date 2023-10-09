@@ -47,6 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsBaseDatos.cs" />
+    <Compile Include="frmConsultaBaseDatos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsultaBaseDatos.Designer.cs">
+      <DependentUpon>frmConsultaBaseDatos.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmArbolBinario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +103,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmConsultaBaseDatos.resx">
+      <DependentUpon>frmConsultaBaseDatos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmArbolBinario.resx">
       <DependentUpon>frmArbolBinario.cs</DependentUpon>
     </EmbeddedResource>

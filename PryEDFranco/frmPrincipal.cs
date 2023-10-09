@@ -51,5 +51,11 @@ namespace PryEDFranco
             frmArbolBinario v = new frmArbolBinario();
             v.ShowDialog();
         }
+
+        private void consultasEnLaBaseDeDatosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmConsultaBaseDatos v = new frmConsultaBaseDatos();
+            v.ShowDialog();
+        }
     }
 }
