@@ -57,5 +57,11 @@ namespace PryEDFranco
             frmConsultaBaseDatos v = new frmConsultaBaseDatos();
             v.ShowDialog();
         }
+
+        private void operacionesConTablaDeBasesDeDatosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmBaseDeDatos v = new frmBaseDeDatos();
+            v.ShowDialog();
+        }
     }
 }

@@ -174,6 +174,7 @@
             this.operacionesConTablaDeBasesDeDatosToolStripMenuItem.Name = "operacionesConTablaDeBasesDeDatosToolStripMenuItem";
             this.operacionesConTablaDeBasesDeDatosToolStripMenuItem.Size = new System.Drawing.Size(288, 22);
             this.operacionesConTablaDeBasesDeDatosToolStripMenuItem.Text = "Operaciones con tabla de bases de datos";
+            this.operacionesConTablaDeBasesDeDatosToolStripMenuItem.Click += new System.EventHandler(this.operacionesConTablaDeBasesDeDatosToolStripMenuItem_Click);
             // 
             // consultasEnLaBaseDeDatosToolStripMenuItem
             // 
