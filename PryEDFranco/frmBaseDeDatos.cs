@@ -25,7 +25,9 @@ namespace PryEDFranco
 
         private void btnInterseccion_Click(object sender, EventArgs e)
         {
-            String varSQL = "SELECT * FROM libro WHERE idIdioma = 2   AND idlibro IN (SELECT idlibro FROM libro WHERE Idpais = 3) ORDER BY 1 ASC";
+            string Sql = "SELECT * FROM Libro WHERE idIdioma = 2 " +
+                 " and in " +
+                 "(SELECT * FROM Libro WHERE idIdioma = 7)";  
 
             objBaseDatos.Listar(dgvConsulta, varSQL);
         }
@@ -44,6 +46,43 @@ namespace PryEDFranco
             String varSQL = "SELECT * FROM libro WHERE idAutor = 2 ";
 
             objBaseDatos.Listar(dgvConsulta, varSQL);
+        }
+
+        private void btnJuntar_Click(object sender, EventArgs e)
+        {
+            string Sql = "SELECT Titulo, Nombre FROM libro, Pais  Where Libro.idlibro = Pais.IdPais ";
+
+            
+
+            objBaseDatos.Listar(dgvConsulta, Sql);
+        }
+
+        private void btnSelecMulti_Click(object sender, EventArgs e)
+        {
+            string Sql = "SELECT * FROM Libro WHERE idIdioma = 2 And idAutor = 2";
+            objBaseDatos.Listar(dgvConsulta, Sql);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string Sql = "SELECT * FROM (select * from libro Where idautor = 4 ) as x Where ididioma = 1 ";
+            objBaseDatos.Listar(dgvConsulta, Sql);
+        }
+
+        private void btnUnion_Click(object sender, EventArgs e)
+        {
+            string Sql = "SELECT * FROM Libro WHERE idIdioma = 2" +
+                " Union " +
+                "SELECT * FROM Libro WHERE idIdioma = 7";
+            objBaseDatos.Listar(dgvConsulta, Sql);
+        }
+
+        private void btnDiferencia_Click(object sender, EventArgs e)
+        {
+            string Sql = "SELECT * FROM Libro WHERE idIdioma = 2" +
+                " and idLibro not in " +
+                "(SELECT idLibro FROM Libro WHERE idpais = 3)";
+            objBaseDatos.Listar(dgvConsulta, Sql);
         }
     }
 }

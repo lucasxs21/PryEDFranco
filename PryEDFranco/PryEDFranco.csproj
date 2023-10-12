@@ -47,6 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsBaseDatos.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmBaseDeDatos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +116,12 @@
     <Compile Include="frmRepaso.Designer.cs">
       <DependentUpon>frmRepaso.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmRepasoOperaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRepasoOperaciones.Designer.cs">
+      <DependentUpon>frmRepasoOperaciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmBaseDeDatos.resx">
@@ -144,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmRepaso.resx">
       <DependentUpon>frmRepaso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRepasoOperaciones.resx">
+      <DependentUpon>frmRepasoOperaciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
