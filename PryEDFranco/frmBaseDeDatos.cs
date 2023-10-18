@@ -27,9 +27,9 @@ namespace PryEDFranco
         {
             string Sql = "SELECT * FROM Libro WHERE idIdioma = 2 " +
                  " and in " +
-                 "(SELECT * FROM Libro WHERE idIdioma = 7)";  
+                 "(SELECT * FROM Libro WHERE idIdioma = 7)";
 
-            objBaseDatos.Listar(dgvConsulta, varSQL);
+            objBaseDatos.Listar(dgvConsulta, Sql);
         }
 
         private void btnProyecMulti_Click(object sender, EventArgs e)

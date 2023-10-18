@@ -47,9 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsBaseDatos.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="frmBaseDeDatos.cs">
       <SubType>Form</SubType>
     </Compile>
